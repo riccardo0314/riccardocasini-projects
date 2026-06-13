@@ -15,7 +15,7 @@ As you can see these two screenshots showcase the programme working in two diffe
    Screenshot 3: here you can see it working. 
    I censored name and account ID to preserve privacy and avoid legal problems (even if both are publicly available information)
 
-asd you can see, before starting to search, it checks is own cache to exclude potential account which was already scanned during previous scan, and in case it find one, it got automatically excluded.
+before the scan start, we can see a rapid briefing of our scan goal, while it checks is own cache to exclude potential account which was already scanned during previous scan, and in case it find one, automatically exclude it.
 <img width="1898" height="908" alt="Screenshot 2026-06-13 231032" src="https://github.com/user-attachments/assets/7fa63945-0326-4db4-aa1e-bcf830faf621" />
 
 once the scan is over, a .csv with direct link to the profile (who match our needs) will be automatically generated through a designed folder. 
