@@ -12,17 +12,16 @@ designed for light personal use, not production. The point of this repository is
 document the engineering process and the decisions behind it.
 
 
-**The problem**
-
 I wanted to find sellers on a large second-hand marketplace who offered a specific
 type of discount on multi-item purchases, within a defined price range. The platform's
 own search has no filter for this: the discount is a property of the seller, not of
 the listing, and the only way to check it manually is to open each seller's profile
 one by one. Across hundreds of search results, that's not practical.
 
-So the real problem wasn't "scrape a website" — it was: how do you reliably surface a
+So the real problem wasn't "scrape a website" it was: how do you reliably surface a
 seller-level attribute that the search layer doesn't expose, without hammering the
 platform?
+
 
 
 **Approach**
@@ -30,12 +29,14 @@ platform?
 The interesting part of this project is the sequence of obstacles and the decisions
 each one forced. I've kept them in the order they actually happened.
 
+
 **1. Finding the right data source**
 
 The public/official surface didn't expose the data I needed. I identified the internal
 REST API the site's own front-end uses (/api/v2/...) and confirmed which endpoints
 held the relevant fields: a catalog/search endpoint to find listings, and a user
 endpoint that carried the seller-level discount object.
+
 
 **2. Debugging a silent failure**
 
@@ -47,8 +48,7 @@ home page first to obtain the necessary cookies, then sending realistic browser 
 (User-Agent, Accept, Accept-Language, Referer). That turned the HTML challenge
 into clean JSON responses.
 
-Skill shown: methodical debugging — reading status codes, content types, and response
-bodies to find the actual cause instead of trial-and-error.
+
 
 **3. Discovering the data shape instead of assuming it**
 
@@ -58,7 +58,7 @@ related to the target attribute. This revealed the real structure — an enabled
 plus a list of tiered discounts (minimal_item_count + fraction) — which I then
 parsed and normalized (fractions like "0.05" into a clean "max %" per seller).
 
-Skill shown: treating an unknown API empirically — verify, then build on what's real.
+
 
 **4. Designing for resilience and good behavior**
 
@@ -80,11 +80,15 @@ Server-side filtering. Price bounds are pushed to the API's own query parameters
 so out-of-range (and many low-effort scam) listings are never even downloaded.
 
 
+
 **5. Making it usable**
 
 Wrapped the script in a small interactive launcher (a guided .bat) with sensible
 defaults and inline guidance, so the tool is runnable without memorizing flags, while
 the underlying CLI stays fully scriptable.
+
+
+
 
 
 
