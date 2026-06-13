@@ -1,4 +1,4 @@
-Marketplace Deal Finder
+*Marketplace Deal Finder*
 
 
 A command-line tool that automates a search workflow a major resale marketplace
